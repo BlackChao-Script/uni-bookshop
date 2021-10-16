@@ -17,7 +17,7 @@ const install = (Vue, vm) => {
 		// 引用token
 		// 方式一，存放在vuex的token，假设使用了uView封装的vuex方式
 		// config.header.token = vm.token;
-		config.header.Authorization = 'Bearer' + vm.access_token
+		config.header.Authorization = 'Bearer' + vm.vuex_token
 		return config;
 	}
 
@@ -36,11 +36,16 @@ const install = (Vue, vm) => {
 			vm.$u.toast(data.message);
 			return false;
 		} else if (statusCode == 401) {
-			// 401为token失效，跳转登录
-			vm.$u.toast('验证失败，请重新登录');
-			setTimeout(() => {
-				vm.$u.route('/pages/user/login')
-			}, 1500)
+			// 401的情况有两种,一种是认证通过;一种是没有token或者过期
+			if (data.message === 'Unauthorized') {
+				vm.$u.toast('账号或者密码错误');
+			} else {
+				// 401为token失效，跳转登录
+				vm.$u.toast('验证失败，请重新登录');
+				setTimeout(() => {
+					vm.$u.route('/pages/user/login')
+				}, 1500)
+			}
 			return false;
 		} else if (statusCode == 422) {
 			// 表单验证未通过

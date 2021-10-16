@@ -1,12 +1,14 @@
-import { mapState } from 'vuex'
+import {
+	mapState
+} from 'vuex'
 import store from "@/store"
 
 // 尝试将用户在根目录中的store/index.js的vuex的state变量，全部加载到全局变量中
 let $uStoreKey = [];
-try{
+try {
 	$uStoreKey = store.state ? Object.keys(store.state) : [];
-}catch(e){
-	
+} catch (e) {
+
 }
 
 module.exports = {
@@ -16,7 +18,8 @@ module.exports = {
 		// 如果要修改vuex的state的version变量为1.0.1 => this.$u.vuex('version', '1.0.1')
 		this.$u.vuex = (name, value) => {
 			this.$store.commit('$uStore', {
-				name,value
+				name,
+				value
 			})
 		}
 	},
@@ -25,3 +28,8 @@ module.exports = {
 		...mapState($uStoreKey)
 	}
 }
+
+// uview封装的vuex
+// console.log(this.vuex_version)
+// this.$u.vuex('vuex_user.name','Chaoer')
+// console.log(this.vuex_user.name)
