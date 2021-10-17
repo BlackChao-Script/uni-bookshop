@@ -1,15 +1,13 @@
 <template>
-	<view class="wrap">
+	<view class="register">
 		<view class="top"></view>
 		<view class="content">
-			<view class="title">欢迎登录图书商城</view>
-			<input class="u-border-bottom" v-model="email" placeholder="请输入邮箱" />
+			<view class="title">注册账号</view>
+			<input class="u-border-bottom" v-model="name" placeholder="昵称" />
+			<input class="u-border-bottom" v-model="email" placeholder="邮箱" />
 			<input class="u-border-bottom" type="password" v-model="password" placeholder="请输入密码" />
-			<button @tap="submit" :style="[inputStyle]" class="getCaptcha">登录</button>
-			<view class="alternative">
-				<view class="password">找回密码</view>
-				<view class="issue" @click="toRegister">注册</view>
-			</view>
+			<input class="u-border-bottom" type="password" v-model="password_confirmation" placeholder="请确定密码" />
+			<button @tap="submit" :style="[inputStyle]" class="getCaptcha">完成注册</button>
 		</view>
 	</view>
 </template>
@@ -18,14 +16,20 @@
 export default {
 	data() {
 		return {
+			// 昵称
+			name: '',
+			// 邮箱
 			email: '',
-			password: ''
+			// 密码
+			password: '',
+			// 确定密码
+			password_confirmation: ''
 		}
 	},
 	computed: {
 		inputStyle() {
 			let style = {}
-			if (this.$u.test.email(this.email) && this.password) {
+			if (this.$u.test.email(this.email) && this.password && this.password == this.password_confirmation && this.name) {
 				style.color = '#fff'
 				style.backgroundColor = this.$u.color['warning']
 			}
@@ -33,45 +37,33 @@ export default {
 		}
 	},
 	methods: {
-		// 完成登录表单提交
+		// 完成注册提交表单
 		async submit() {
-			if (!this.$u.test.email(this.email) || !this.password) return
+			if (!this.$u.test.email(this.email) || !this.password || this.password !== this.password_confirmation || !this.name) return
 			// 处理登录可用的参数
 			const pamams = {
+				name: this.name,
 				email: this.email,
-				password: this.password
+				password: this.password,
+				password_confirmation: this.password_confirmation
 			}
-			// 请求API,执行登录
-			const res = await this.$u.api.authLogin(pamams)
-			// 缓存token
-			this.$u.vuex('vuex_token', res.access_token)
-			// 请求用户信息
-			const userInfo = await this.$u.api.userInfo()
-			this.$u.toast('登录成功')
-			// 缓存用户信息
-			this.$u.vuex('vuex_user', userInfo)
-			// 登录之后,跳转到来源页面
-			const backUrl = uni.getStorageSync('back_url') || 'pages/index/index'
+			// 请求API,执行注册
+			const RegisterApi = await this.$u.api.authRegister(pamams)
+			this.$u.toast('注册成功')
+			// 跳转至登录页面
 			setTimeout(() => {
 				this.$u.route({
 					type: 'reLaunch',
-					url: backUrl
+					url: 'pages/auth/login'
 				})
 			}, 1500)
-		},
-		// 点击跳转指注册页面
-		toRegister() {
-			this.$u.route({
-				type: 'navigateTo',
-				url: 'pages/auth/register'
-			})
 		}
 	}
 }
 </script>
 
 <style lang="scss" scoped>
-.wrap {
+.register {
 	font-size: 28rpx;
 	.content {
 		width: 600rpx;

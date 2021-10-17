@@ -40,11 +40,8 @@ const install = (Vue, vm) => {
 			if (data.message === 'Unauthorized') {
 				vm.$u.toast('账号或者密码错误');
 			} else {
-				// 401为token失效，跳转登录
-				vm.$u.toast('验证失败，请重新登录');
-				setTimeout(() => {
-					vm.$u.route('/pages/user/login')
-				}, 1500)
+				// 如果请求了需要登录才能使用的API,跳转到登录页面
+				vm.$u.utils.isLogin()
 			}
 			return false;
 		} else if (statusCode == 422) {
