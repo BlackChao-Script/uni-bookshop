@@ -7,14 +7,16 @@ const install = (Vue, vm) => {
 	let authRegister = params => vm.$u.post('/api/auth/register', params); // 注册
 
 	// 用户相关
-	let userInfo = params => vm.$u.get('/api/user') //用户详情
+	let userInfo = () => vm.$u.get('/api/user') // 用户详情
+	let updateUser = params => vm.$u.put('/api/user',params) // 修改用户信息
 
 	// 导出请求方法
 	vm.$u.api = {
 		getIndexData,
 		authLogin,
 		authRegister,
-		userInfo
+		userInfo,
+		updateUser
 	};
 }
 

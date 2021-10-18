@@ -36,6 +36,11 @@
 			"style": {
 				"navigationBarTitleText": "注册"
 			}
+		}, {
+			"path": "pages/mine/mineInfo",
+			"style": {
+				"navigationBarTitleText": "修改个人信息"
+			}
 		}
 	],
 	"globalStyle": {

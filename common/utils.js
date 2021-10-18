@@ -2,7 +2,7 @@ const install = (Vue, vm) => {
 	// 校验是否登录
 	const isLogin = () => {
 		// 如果没有token,跳转到登录页面
-		const token = vm.$u.vuex_token
+		const token = vm.vuex_token
 		if (!token) {
 			// 来自哪个页面
 			const currentPages = getCurrentPages().pop()
@@ -32,10 +32,17 @@ const install = (Vue, vm) => {
 		}
 		return true
 	}
-
+	// 更新用户信息
+	const updateUser = async () => {
+		// 请求用户信息
+		const userInfo = await vm.$u.api.userInfo()
+		// 缓存用户信息
+		vm.$u.vuex('vuex_user', userInfo)
+	}
 	// 导出方法
 	vm.$u.utils = {
 		isLogin,
+		updateUser
 	};
 }
 

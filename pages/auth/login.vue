@@ -45,11 +45,9 @@ export default {
 			const res = await this.$u.api.authLogin(pamams)
 			// 缓存token
 			this.$u.vuex('vuex_token', res.access_token)
-			// 请求用户信息
-			const userInfo = await this.$u.api.userInfo()
-			this.$u.toast('登录成功')
-			// 缓存用户信息
-			this.$u.vuex('vuex_user', userInfo)
+			vm.$u.toast('登录成功')
+			// 刷新用户信息，更新vuex
+			this.$u.utils.updateUser()
 			// 登录之后,跳转到来源页面
 			const backUrl = uni.getStorageSync('back_url') || 'pages/index/index'
 			setTimeout(() => {
@@ -62,7 +60,6 @@ export default {
 		// 点击跳转指注册页面
 		toRegister() {
 			this.$u.route({
-				type: 'navigateTo',
 				url: 'pages/auth/register'
 			})
 		}
