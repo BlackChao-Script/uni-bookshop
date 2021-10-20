@@ -45,7 +45,7 @@ export default {
 			const res = await this.$u.api.authLogin(pamams)
 			// 缓存token
 			this.$u.vuex('vuex_token', res.access_token)
-			vm.$u.toast('登录成功')
+			this.$u.toast('登录成功')
 			// 刷新用户信息，更新vuex
 			this.$u.utils.updateUser()
 			// 登录之后,跳转到来源页面

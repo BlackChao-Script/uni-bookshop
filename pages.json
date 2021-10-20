@@ -41,6 +41,11 @@
 			"style": {
 				"navigationBarTitleText": "修改个人信息"
 			}
+		}, {
+			"path": "pages/shop/showgoods",
+			"style": {
+				"navigationBarTitleText": "商品详细"
+			}
 		}
 	],
 	"globalStyle": {

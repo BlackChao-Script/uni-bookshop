@@ -36,7 +36,6 @@ export default {
 		submit() {
 			this.$refs.uForm.validate(async valid => {
 				if (valid) {
-					console.log(this.form)
 					// 更新用户信息
 					await this.$u.api.updateUser(this.form)
 					// 刷新用户信息，更新vuex

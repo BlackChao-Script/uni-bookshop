@@ -6,7 +6,7 @@
 		<view class="tabs"><u-tabs name="cate_name" active-color="#d4237a" :list="categoriesData" :is-scroll="false" :current="current" @change="change"></u-tabs></view>
 		<!-- 商品列表 -->
 		<view class="goods u-skeleton">
-			<view class="goodsList" v-for="(item, index) in goodsData.length !== 0 ? goodsData : 4" :key="index">
+			<view class="goodsList" v-for="(item, index) in goodsData.length !== 0 ? goodsData : 4" :key="index" @click="toShowGoods(item.id)">
 				<view class="goodsList_img"><u-image class="u-skeleton-fillet" width="100%" height="300rpx" :src="item.cover_url"></u-image></view>
 				<view class="text u-skeleton-rect">{{ item.title }}</view>
 				<view class="pice u-skeleton-rect">
@@ -79,8 +79,18 @@ export default {
 			this.loading = false
 			this.swiperData = res.slides
 			this.goodsData = [...this.goodsData, ...res.goods.data]
+		},
+		// 点击商品触发
+		toShowGoods(id) {
+			this.$u.route({
+				url: 'pages/shop/showgoods',
+				params: {
+					id
+				}
+			})
 		}
 	},
+	// 触底的钩子
 	onReachBottom() {
 		// 重新请求数据,带上分页数据
 		this.page += 1
