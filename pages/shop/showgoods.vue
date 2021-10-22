@@ -54,10 +54,10 @@
 						<view class="text u-line-1" style="color: red">已收藏</view>
 					</block>
 				</view>
-				<view class="item car">
+				<view class="item car " @click="toCart">
 					<u-badge class="car-num" :count="cartCount" type="error" :offset="[-3, -6]"></u-badge>
 					<u-icon name="shopping-cart" :size="40" :color="$u.color['contentColor']"></u-icon>
-					<view class="text u-line-1">购物车</view>
+					<view class="text u-line-1" >购物车</view>
 				</view>
 			</view>
 			<view class="right"><view class="cart btn u-line-1" @click="addCart">加入购物车</view></view>
@@ -154,7 +154,15 @@ export default {
 			if (token) {
 				const res = await this.$u.api.cartList()
 				this.cartCount = res.data.length
+				console.log(res)
 			}
+		},
+		// 跳转至购物车页面
+		toCart() {
+			this.$u.route({
+				type: 'switchTab',
+				url: 'pages/cart/index'
+			})
 		}
 	}
 }

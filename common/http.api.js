@@ -11,7 +11,7 @@ const install = (Vue, vm) => {
 	// 用户相关
 	let userInfo = () => vm.$u.get('/api/user') // 用户详情
 	let updateUser = params => vm.$u.put('/api/user', params) // 修改用户信息
-	let upadtaAvatar = params => vm.$u.patch('/api/user/avatar') // 更新用户头像
+	let upadtaAvatar = params => vm.$u.patch('/api/user/avatar', params) // 更新用户头像
 
 	// 商品相关
 	let getShowGoodsData = params => vm.$u.get(`/api/goods/${params}`); // 商品数据
@@ -20,7 +20,13 @@ const install = (Vue, vm) => {
 
 	// 购物车相关
 	let cartAddGoods = params => vm.$u.post('/api/carts', params) // 添加购物车
-	let cartList = () => vm.$u.get('/api/carts') // 购物车列表
+	let cartList = () => vm.$u.get('/api/carts?include=goods') // 购物车列表
+	let cartChecked = params => vm.$u.patch('/api/carts/checked', params) // 改变选中购物车
+	let cartChangeNum = (cartId, num) => vm.$u.put(`/api/carts/${cartId}`, num) // 改变购物车数量
+	let cartRemGoods = cart => vm.$u.delete(`/api/carts/${cart}`) // 移除购物车商品
+
+	// 订单相关
+	let ordersPreview = () => vm.$u.get('/api/orders/preview') // 获取订单预览数据
 
 
 	// 导出请求方法
@@ -37,7 +43,11 @@ const install = (Vue, vm) => {
 		goodsCollects,
 		cartAddGoods,
 		cartList,
-		goodsList
+		goodsList,
+		cartChecked,
+		cartChangeNum,
+		cartRemGoods,
+		ordersPreview
 	};
 }
 

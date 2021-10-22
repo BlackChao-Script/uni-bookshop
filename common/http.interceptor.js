@@ -3,7 +3,6 @@ const install = (Vue, vm) => {
 	// 此为自定义配置参数，具体参数见上方说明
 	Vue.prototype.$u.http.setConfig({
 		baseUrl: 'https://api.shop.eduwork.cn', // 请求的本域名
-		// method: 'POST',
 		dataType: 'json', // 设置为json，返回后会对数据进行一次JSON.parse()
 		showLoading: true, // 是否显示请求中的loading
 		loadingText: '请求中...', // 请求loading中的文字提示
