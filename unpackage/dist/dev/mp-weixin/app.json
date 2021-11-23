@@ -6,7 +6,8 @@
     "pages/mine/index",
     "pages/auth/login",
     "pages/auth/register",
-    "pages/mine/mineInfo"
+    "pages/mine/mineInfo",
+    "pages/shop/showgoods"
   ],
   "subPackages": [],
   "window": {
@@ -47,6 +48,5 @@
       }
     ]
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap.json"
+  "usingComponents": {}
 }

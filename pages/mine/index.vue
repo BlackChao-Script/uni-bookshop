@@ -15,8 +15,8 @@
 		</view>
 		<view class="u-m-t-20">
 			<u-cell-group>
-				<u-cell-item icon="rmb-circle" title="订单"></u-cell-item>
 				<u-cell-item icon="star" title="收藏"></u-cell-item>
+				<u-cell-item icon="rmb-circle" title="订单"></u-cell-item>
 				<u-cell-item icon="car" title="收货地址"></u-cell-item>
 			</u-cell-group>
 		</view>
@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import upload from '@/components/upload/upload.vue'
+import upload from '../../components/upload/upload.vue'
 export default {
 	data() {
 		return {
@@ -60,7 +60,7 @@ export default {
 					url: 'pages/index/index'
 				})
 			}, 1500)
-		}
+		},
 	}
 }
 </script>

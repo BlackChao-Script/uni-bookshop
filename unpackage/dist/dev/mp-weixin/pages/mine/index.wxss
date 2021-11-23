@@ -20,7 +20,7 @@ page {
   background-color: #fff;
 }
 .avtar {
-  width: 70px;
-  height: 70px;
+  width: 150rpx;
+  height: 150rpx;
 }
 

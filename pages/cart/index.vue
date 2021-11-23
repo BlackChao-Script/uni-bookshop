@@ -1,21 +1,23 @@
 <template>
 	<view class="cart">
 		<!-- 购物车列表 -->
-		<view class="cart_list" v-for="(item, index) in cartList" :key="item.id">
-			<!-- 右侧商品展示 -->
-			<view class="list_r">
-				<view class="r_img"><u-image width="100%" height="300rpx" :src="item.goods.cover_url"></u-image></view>
-				<view class="r_content">
-					<view class="content_title">{{ item.goods.title }}</view>
-					<view class="content_categor">{{ item.goods.description }}</view>
-					<view class="content_bottom">
-						<view class="bottom_pice">￥{{ item.goods.price }}</view>
-						<view class="bottom_btn">
-							<view class="btn_jian"><u-button @click="clickJian(item.id, index)" shape="circle" size="mini">-</u-button></view>
-							<view class="btn_num">{{ item.num }}</view>
-							<view class="btn_add"><u-button @click="clickAdd(item.id, index)" shape="circle" size="mini">+</u-button></view>
+		<view class="cart_box">
+			<view class="cart_list" v-for="(item, index) in cartList" :key="item.id">
+				<!-- 右侧商品展示 -->
+				<view class="list_r">
+					<view class="r_img"><u-image width="100%" height="300rpx" :src="item.goods.cover_url"></u-image></view>
+					<view class="r_content">
+						<view class="content_title">{{ item.goods.title }}</view>
+						<view class="content_categor">{{ item.goods.description }}</view>
+						<view class="content_bottom">
+							<view class="bottom_pice">￥{{ item.goods.price }}</view>
+							<view class="bottom_btn">
+								<view class="btn_jian"><u-button @click="clickJian(item.id, index)" shape="circle" size="mini">-</u-button></view>
+								<view class="btn_num">{{ item.num }}</view>
+								<view class="btn_add"><u-button @click="clickAdd(item.id, index)" shape="circle" size="mini">+</u-button></view>
+							</view>
+							<view class="bottom_del" @click="clickTrash(item.id)"><u-icon name="trash" color="#d4237a" size="40"></u-icon></view>
 						</view>
-						<view class="bottom_del" @click="clickTrash(item.id)"><u-icon name="trash" color="#d4237a" size="40"></u-icon></view>
 					</view>
 				</view>
 			</view>
@@ -104,60 +106,65 @@ export default {
 
 <style lang="scss" scoped>
 .cart {
-	.cart_list {
-		margin-top: 20rpx;
-		display: flex;
-		background-color: #fafafa;
-		height: 300rpx;
-		.list_r {
-			flex: 1;
+	.cart_box {
+		/* #ifdef MP-WEIXIN */
+		margin-bottom: 100rpx;
+		/* #endif */
+		.cart_list {
+			margin-top: 20rpx;
 			display: flex;
-			.r_img {
-				width: 35%;
-			}
-			.r_content {
-				width: 65%;
-				margin-left: 10rpx;
-				margin-top: 10rpx;
-				.content_title {
-					font-size: 35rpx;
-					font-weight: 700;
-					padding: 10rpx;
+			background-color: #fafafa;
+			height: 300rpx;
+			.list_r {
+				flex: 1;
+				display: flex;
+				.r_img {
+					width: 35%;
 				}
-				.content_categor {
-					font-size: 25rpx;
-					margin-top: 20rpx;
-					color: #8a8a8a;
-				}
-				.content_bottom {
-					display: flex;
-					align-items: center;
-					margin-top: 120rpx;
-					.bottom_pice {
-						width: 30%;
+				.r_content {
+					width: 65%;
+					margin-left: 10rpx;
+					margin-top: 10rpx;
+					.content_title {
 						font-size: 35rpx;
 						font-weight: 700;
-						color: #d4237a;
+						padding: 10rpx;
 					}
-					.bottom_btn {
-						width: 50%;
+					.content_categor {
+						font-size: 25rpx;
+						margin-top: 20rpx;
+						color: #8a8a8a;
+					}
+					.content_bottom {
 						display: flex;
 						align-items: center;
-						.btn_jian {
+						margin-top: 120rpx;
+						.bottom_pice {
 							width: 30%;
+							font-size: 35rpx;
+							font-weight: 700;
+							color: #d4237a;
 						}
-						.btn_add {
-							width: 30%;
+						.bottom_btn {
+							width: 50%;
+							display: flex;
+							align-items: center;
+							.btn_jian {
+								width: 30%;
+							}
+							.btn_add {
+								width: 30%;
+							}
+							.btn_num {
+								width: 30%;
+								margin: 0 5rpx;
+								text-align: center;
+							}
 						}
-						.btn_num {
-							width: 30%;
-							margin: 0 5rpx;
-							text-align: center;
+						.bottom_del {
+							margin-left: 20rpx;
+							width: 20%;
 						}
-					}
-					.bottom_del {
-						margin-left: 20rpx;
-						width: 20%;
 					}
 				}
 			}
@@ -165,11 +172,18 @@ export default {
 	}
 	.cart_tabar {
 		position: fixed;
+		/* #ifdef H5 */
 		bottom: 100rpx;
+		/* #endif */
+		/* #ifdef MP-WEIXIN */
+		z-index: 999;
+		bottom: 0;
+		/* #endif */
 		left: 0;
 		right: 0;
 		display: flex;
 		align-items: center;
+		background-color: #fff;
 		.tabar_text {
 			width: 50%;
 			margin-left: 50rpx;

@@ -6,6 +6,7 @@
 		<view class="tabs"><u-tabs name="cate_name" active-color="#d4237a" :list="categoriesData" :is-scroll="false" :current="current" @change="change"></u-tabs></view>
 		<!-- 商品列表 -->
 		<view class="goods u-skeleton">
+			<!-- #ifdef H5 -->
 			<view class="goodsList" v-for="(item, index) in goodsData.length !== 0 ? goodsData : 4" :key="index" @click="toShowGoods(item.id)">
 				<view class="goodsList_img"><u-image class="u-skeleton-fillet" width="100%" height="300rpx" :src="item.cover_url"></u-image></view>
 				<view class="text u-skeleton-rect">{{ item.title }}</view>
@@ -14,6 +15,17 @@
 					<view class="pice_left u-skeleton-rect">销量{{ item.sales }}</view>
 				</view>
 			</view>
+			<!-- #endif -->
+			<!-- #ifdef MP-WEIXIN -->
+			<view class="goodsList" v-for="(item, index) in goodsData" :key="index" @click="toShowGoods(item.id)">
+				<view class="goodsList_img"><u-image class="u-skeleton-fillet" width="100%" height="300rpx" :src="item.cover_url"></u-image></view>
+				<view class="text u-skeleton-rect">{{ item.title }}</view>
+				<view class="pice u-skeleton-rect">
+					<view class="pice_right u-skeleton-rect">￥{{ item.price }}</view>
+					<view class="pice_left u-skeleton-rect">销量{{ item.sales }}</view>
+				</view>
+			</view>
+			<!-- #endif -->
 		</view>
 		<!-- 骨架屏 -->
 		<u-skeleton bg-color="#fff" :loading="loading" :animation="true"></u-skeleton>

@@ -12,6 +12,7 @@ const install = (Vue, vm) => {
 	let userInfo = () => vm.$u.get('/api/user') // 用户详情
 	let updateUser = params => vm.$u.put('/api/user', params) // 修改用户信息
 	let upadtaAvatar = params => vm.$u.patch('/api/user/avatar', params) // 更新用户头像
+	let userLikeGoods = () => vm.$u.get('/api/collects') // 获取收藏数据
 
 	// 商品相关
 	let getShowGoodsData = params => vm.$u.get(`/api/goods/${params}`); // 商品数据
@@ -47,7 +48,8 @@ const install = (Vue, vm) => {
 		cartChecked,
 		cartChangeNum,
 		cartRemGoods,
-		ordersPreview
+		ordersPreview,
+		userLikeGoods
 	};
 }
 

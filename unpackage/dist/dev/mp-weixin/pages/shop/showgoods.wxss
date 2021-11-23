@@ -1,0 +1,147 @@
+@charset "UTF-8";
+/**
+ * 下方引入的为uView UI的集成样式文件，为scss预处理器，其中包含了一些"u-"开头的自定义变量
+ * uView自定义的css类名和scss变量，均以"u-"开头，不会造成冲突，请放心使用 
+ */
+.showGoods .showGoods_img.data-v-e542b14e {
+  height: 600rpx;
+}
+.showGoods .showGoods_title.data-v-e542b14e {
+  margin: 20rpx;
+  font-size: 35rpx;
+  font-weight: 600;
+}
+.showGoods .showGoods_del.data-v-e542b14e {
+  padding: 10rpx;
+  padding-bottom: 150rpx;
+}
+.showGoods .showGoods_box.data-v-e542b14e {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  margin-top: 30rpx;
+}
+.showGoods .showGoods_box .box1.data-v-e542b14e {
+  width: 20%;
+  font-size: 35rpx;
+  color: red;
+}
+.showGoods .showGoods_box .box2.data-v-e542b14e {
+  width: 20%;
+}
+.showGoods .showGoods_box .box2 .box2_l.data-v-e542b14e {
+  padding-left: 20rpx;
+}
+.showGoods .showGoods_tabs.data-v-e542b14e {
+  margin-top: 20rpx;
+}
+.showGoods .showGoods_tabs .comment.data-v-e542b14e {
+  display: flex;
+  padding: 30rpx;
+}
+.showGoods .showGoods_tabs .comment .left image.data-v-e542b14e {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 50%;
+  background-color: #f2f2f2;
+}
+.showGoods .showGoods_tabs .comment .right.data-v-e542b14e {
+  flex: 1;
+  padding-left: 20rpx;
+  font-size: 30rpx;
+}
+.showGoods .showGoods_tabs .comment .right .top.data-v-e542b14e {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+.showGoods .showGoods_tabs .comment .right .top .name.data-v-e542b14e {
+  color: #5677fc;
+}
+.showGoods .showGoods_tabs .comment .right .content.data-v-e542b14e {
+  margin-bottom: 10rpx;
+}
+.showGoods .showGoods_likeGoods .goods.data-v-e542b14e {
+  margin-top: 10rpx;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.showGoods .showGoods_likeGoods .goods .goodsList.data-v-e542b14e {
+  width: 45%;
+  box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20rpx;
+  transition: all 1s;
+}
+.showGoods .showGoods_likeGoods .goods .goodsList .text.data-v-e542b14e {
+  text-align: center;
+  font-size: 30rpx;
+  margin-top: 5rpx;
+  font-weight: 600;
+}
+.showGoods .showGoods_likeGoods .goods .goodsList .pice.data-v-e542b14e {
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  margin-top: 10rpx;
+  margin-bottom: 30rpx;
+}
+.showGoods .showGoods_likeGoods .goods .goodsList .pice .pice_right.data-v-e542b14e {
+  width: 40%;
+  color: #d4237a;
+}
+.showGoods .showGoods_likeGoods .goods .goodsList .pice .pice_left.data-v-e542b14e {
+  width: 40%;
+  color: #c0c4cc;
+  font-size: 15rpx;
+}
+.showGoods .showGoods_likeGoods .goods .goodsList.data-v-e542b14e:hover {
+  box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.5);
+}
+.showGoods .navigation.data-v-e542b14e {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  margin-top: 100rpx;
+  border: solid 2rpx #f2f2f2;
+  background-color: #ffffff;
+  padding: 16rpx 0;
+}
+.showGoods .navigation .left.data-v-e542b14e {
+  margin-left: 20rpx;
+  width: 50%;
+  display: flex;
+  font-size: 20rpx;
+}
+.showGoods .navigation .left .item.data-v-e542b14e {
+  margin: 0 30rpx;
+}
+.showGoods .navigation .left .item.car.data-v-e542b14e {
+  text-align: center;
+  position: relative;
+}
+.showGoods .navigation .left .item.car .car-num.data-v-e542b14e {
+  position: absolute;
+  top: -10rpx;
+  right: -10rpx;
+}
+.showGoods .navigation .right.data-v-e542b14e {
+  display: flex;
+  font-size: 28rpx;
+  align-items: center;
+  margin-right: 20rpx;
+}
+.showGoods .navigation .right .btn.data-v-e542b14e {
+  line-height: 66rpx;
+  padding: 0 30rpx;
+  border-radius: 36rpx;
+  color: #ffffff;
+}
+.showGoods .navigation .right .cart.data-v-e542b14e {
+  background-color: #ed3f14;
+  margin-left: 40rpx;
+}
+
